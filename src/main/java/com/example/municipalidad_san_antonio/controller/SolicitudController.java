@@ -80,7 +80,7 @@ public class SolicitudController {
     @DeleteMapping("/api/v1/solicitudes/{id}/documentos/{docId}")
     public ResponseEntity<?> deleteDocumento(@PathVariable Integer idSolicitud, @PathVariable Integer idDocumento) {
         List<Documento> documentos = documentoService.findByIdSolicitud(idSolicitud);
-        Documento documento = documentoService.findById(idDocumento);
+        List<Documento> documento = documentoService.findByIdDocumento(idDocumento);
         if (documento == null || documentos == null) {
             return ResponseEntity.status(404).body("Documento o solicitud no encontrada");
         }
