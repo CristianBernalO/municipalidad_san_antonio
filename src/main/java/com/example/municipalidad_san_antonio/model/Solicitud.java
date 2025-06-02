@@ -21,16 +21,16 @@ public class Solicitud {
     @Column
     private Integer idRevisorTecnico;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String nombreSolicitante;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String rutSolicitante;
 
-    @Column(nullable = false)
+    @Column
     private Date fechaSolicitud;
 
-    @Column(nullable = false)
+    @Column
     private String estadoSolicitud;
 
     @Column

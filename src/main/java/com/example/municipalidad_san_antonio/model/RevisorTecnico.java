@@ -17,12 +17,12 @@ public class RevisorTecnico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRevisor;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String nombre;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     public String apellido;
 
-    @Column(nullable = false)
+    @Column
     private String email;
 }

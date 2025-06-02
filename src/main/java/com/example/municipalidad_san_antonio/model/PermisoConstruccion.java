@@ -19,15 +19,15 @@ public class PermisoConstruccion {
     @Column
     private Integer idSolicitud;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 30)
     private String codigoPermiso;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String nombreSolicitante;
 
-    @Column(length = 255 , nullable = false)
+    @Column(length = 255)
     private String tipoPermiso;
 
-    @Column(length = 100 , nullable = false)
+    @Column(length = 100)
     private String firmaAutorizante;
 }

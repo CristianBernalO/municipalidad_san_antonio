@@ -17,7 +17,10 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPago;
 
-    @Column(name = "fecha_pago", nullable = false)
+    @Column(nullable = false)
+    private Integer idSolicitud;
+
+    @Column(name = "fecha_pago")
     private LocalDateTime fechaPago;
 
     @Column(name = "medio_pago")

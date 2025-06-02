@@ -23,8 +23,10 @@ public class PagoService {
     //Traer por id
 
     public Pago findById(int id){
-        return pagoRepository.findById(id);
+        return pagoRepository.findById(id).orElse(null);
     }
 
+    //Guardar pago
+    public Pago save(Pago pago){ return pagoRepository.save(pago);}
 
 }

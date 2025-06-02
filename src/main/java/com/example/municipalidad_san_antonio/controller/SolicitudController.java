@@ -30,10 +30,13 @@ public class SolicitudController {
     //Crear nueva solicitud de permiso.
     @PostMapping("/api/v1/solicitudes")
     public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud) {
+        if (solicitud == null) {
+            return ResponseEntity.status(400).body("Solicitud Incompleta");
+        }
         solicitudService.save(solicitud);
         return ResponseEntity.status(201).body("Solicitud guardada");
     }
-    //Obtener detalles de una solicitud por su ID. Incluye estado actual y observaciones.
+    //Obtener detalles de una solicitud por su ID.
     @GetMapping("/api/v1/solicitudes/{id}")
     public ResponseEntity<?> findSolicitudeById(@PathVariable Integer id) {
         Solicitud solicitud = solicitudService.findById(id);
@@ -50,7 +53,11 @@ public class SolicitudController {
     //Actualizar una solicitud
     @PutMapping("/api/v1/solicitudes/{id}")
     public ResponseEntity<?> updateSolicitud(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
-        return ResponseEntity.status(200).body(solicitudService.actualizarSolicitud(id, solicitud));
+        if (solicitud == null) {
+            return ResponseEntity.status(400).body("Solicitud no encontrada");
+        }
+        solicitudService.actualizarSolicitud(id, solicitud);
+        return ResponseEntity.status(200).body("Solicitud actualizada");
     }
     //Borrar una solicitud
     @DeleteMapping("/api/v1/borrarsolicitud/{id}")
@@ -66,6 +73,10 @@ public class SolicitudController {
     //Agregar documento por id de solicitud
     @PostMapping("/api/v1/solicitudes/{id}/documentos")
     public ResponseEntity<?> addDocumento(@PathVariable Integer id, @RequestBody Documento documento) {
+        if (documento == null) {
+            return ResponseEntity.status(400).body("Documento no encontrado");
+        }
+        documento.setIdSolicitud(id);
         documentoService.save(documento);
         return ResponseEntity.status(200).body("documento guardado");
     }
@@ -100,20 +111,18 @@ public class SolicitudController {
     //Registrar observaciones
     @PostMapping("/api/v1/revisiones/{id}/observaciones")
     public ResponseEntity<?> saveObservaciones(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
-        if (solicitud == null) {
+        if (solicitud.getIdSolicitud() != id) {
             return ResponseEntity.status(404).body("Solicitud no encontrada");
         }
-        solicitud.setIdSolicitud(id);
         solicitudService.save(solicitud);
-        return ResponseEntity.status(201).body("Solicitud guardada");
+        return ResponseEntity.status(201).body("Observaciones ingresadas");
     }
     //Aprobar la solicitud
     @PostMapping("/api/v1/revisiones/{id}/observaciones")
-    public ResponseEntity<?> aprovarSolicitud(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
-        if (solicitud == null) {
+    public ResponseEntity<?> aprobarSolicitud(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
+        if (solicitud.getIdSolicitud() != id) {
             return ResponseEntity.status(404).body("Solicitud no encontrada");
         }
-        solicitud.setIdSolicitud(id);
         solicitud.setEstadoSolicitud("Pendiente aprobacion tecnica");
         solicitudService.save(solicitud);
         return ResponseEntity.status(201).body("Solicitud aprobada");
@@ -125,8 +134,7 @@ public class SolicitudController {
         if (!estadoSolicitud.equalsIgnoreCase("Pendiente aprobacion tecnica")) {
             return ResponseEntity.status(404).body("Solicitudes no encontradas");
         }
-        List<Solicitud> solicitudesPendientes = solicitudService.findAllByEstadoSolicitud(estadoSolicitud);
-        return ResponseEntity.status(200).body(solicitudesPendientes);
+        return ResponseEntity.status(200).body(solicitudService.findAllByEstadoSolicitud(estadoSolicitud));
     }
     //firmar y validar solicitud
     @PostMapping("/api/v1/resoluciones/{id}/firmar")

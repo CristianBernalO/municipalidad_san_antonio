@@ -17,8 +17,8 @@ public class PagoController {
 
     @Autowired
     private PagoService pagoService;
-    //Obtener un Pago por su ID
-    @GetMapping("/api/v1/pagos/{id}")
+    //Obtener una orden de Pago por su ID
+    @GetMapping("/api/v1/pagos/{id}/orden")
     public ResponseEntity<?> findById(@PathVariable Integer id) {
         Pago pago = pagoService.findById(id);
         if (pago == null) {
@@ -26,9 +26,22 @@ public class PagoController {
         }
         return ResponseEntity.status(200).body(pago);
     }
-    @GetMapping("/api/v1/pagos")
-    public ResponseEntity<?> findAllPagos() {
-        List<Pago> pagos = pagoService.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(pagos);
+    //Enviar datos a traves de integración de medio de pago
+    @PostMapping("/api/v1/pagos/{id}/confirmar")
+    public ResponseEntity<?> savePago(@PathVariable Integer id, @RequestBody Pago pago) {
+        if (pago == null) {
+            return ResponseEntity.status(404).body("pago no encontrad0");
+        }
+        pagoService.save(pago);
+        return ResponseEntity.status(201).body("Datos de pago enviados");
+    }
+    //Obtener el estado del pago por su ID
+    @GetMapping("/api/v1/pagos/{id}/estado")
+    public ResponseEntity<?> findEstadoPago(@PathVariable Integer id) {
+        Pago pago = pagoService.findById(id);
+        if (pago == null) {
+            return ResponseEntity.status(404).body("pago no encontrad0");
+        }
+        return ResponseEntity.status(200).body(pago.getEstadoPago());
     }
 }

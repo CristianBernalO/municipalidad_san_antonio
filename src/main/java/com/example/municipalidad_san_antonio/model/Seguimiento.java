@@ -15,7 +15,7 @@ public class Seguimiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "estado", nullable = false)
+    @Column(name = "estado")
     private String estado;
 
     @Column(name = "mensaje")
