@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface DocumentoRepository extends JpaRepository<Documento, Integer> {
-    Documento findByIdDocumento(int idDocumento);
+
+    List<Documento> findByIdSolicitud(Integer idSolicitud);
+
     List<Documento> findByTipoDocumento(String tipoDocumento);
 }

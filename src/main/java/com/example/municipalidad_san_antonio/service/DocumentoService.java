@@ -20,8 +20,6 @@ public class DocumentoService {
         return documentoRepository.findAll();
     }
 
-    ;
-
     //traer por id
     public Documento findById(Integer id) {
         return documentoRepository.findById(id).orElse(null);
@@ -37,17 +35,13 @@ public class DocumentoService {
         return documentoRepository.findByTipoDocumento(tipoDocumento);
     }
 
-
     //guardando un Documento
     public Documento save(Documento documento) {
         return documentoRepository.save(documento);
     }
 
-
-
-
-
-
-
-
+    //traer por id de solicitud
+    public List<Documento> findByIdSolicitud(Integer idSolicitud) {
+        return documentoRepository.findByIdSolicitud(idSolicitud);
+    }
 }

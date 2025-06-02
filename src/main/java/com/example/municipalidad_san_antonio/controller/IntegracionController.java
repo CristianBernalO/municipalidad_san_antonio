@@ -1,8 +1,8 @@
 package com.example.municipalidad_san_antonio.controller;
 
-import com.example.municipalidad_san_antonio.model.Integracion;
 import com.example.municipalidad_san_antonio.model.Solicitud;
-import com.example.municipalidad_san_antonio.service.IntegracionService;
+import com.example.municipalidad_san_antonio.service.SeguimientoService;
+import com.example.municipalidad_san_antonio.service.SolicitudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,21 +12,22 @@ import org.springframework.web.bind.annotation.*;
 public class IntegracionController {
 
     @Autowired
-    private IntegracionService integracionService;
+    private SolicitudService solicitudService;
 
-    @GetMapping("/api/v1/integracion/minvu")
-    public ResponseEntity<Integracion> sendSolicitud(@RequestParam Solicitud solicitud) {
-        return ResponseEntity.ok(integracionService.sendSolicitud(solicitud));
+    @Autowired
+    private SeguimientoService seguimientoService;
+
+    @PostMapping("/api/v1/integracion/minvu")
+    public ResponseEntity<?> sendSolicitud(@RequestParam Solicitud solicitud) {
+        return ResponseEntity.status(200).body(solicitudService.save(solicitud));
     }
     @GetMapping("/api/v1/integracion/minvu/estado/{id}")
-    public ResponseEntity<Integracion> getEstado(@PathVariable Long id) {
-        return IntegracionService.getEstado(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> getEstado(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(seguimientoService.getSeguimiento(id));
     }
     @PostMapping("/api/v1/integracion/minvu/guardarSolicitud")
-    public ResponseEntity<Integracion> saveSolicitud(@RequestBody Solicitud solicitud) {
-        return ResponseEntity.ok(IntegracionService.saveSolicitud(solicitud));
+    public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud) {
+        return ResponseEntity.status(200).body(solicitudService.save(solicitud));
     }
 
 
