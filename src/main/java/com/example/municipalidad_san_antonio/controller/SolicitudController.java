@@ -25,7 +25,7 @@ public class SolicitudController {
 
     //Crear nueva solicitud de permiso.
     @PostMapping("/api/v1/solicitudes")
-    public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
+    public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud) {
         solicitudService.save(solicitud);
         return ResponseEntity.status(201).body("Solicitud guardada");
     }
@@ -76,7 +76,7 @@ public class SolicitudController {
     @DeleteMapping("/api/v1/solicitudes/{id}/documentos/{docId}")
     public ResponseEntity<?> deleteDocumento(@PathVariable Integer idSolicitud, @PathVariable Integer idDocumento) {
         List<Documento> documentos = documentoService.findByIdSolicitud(idSolicitud);
-        Documento documento = documentoService.findById(idDocumento);
+        List<Documento> documento = documentoService.findByIdDocumento(idDocumento);
         if (documento == null || documentos == null) {
             return ResponseEntity.status(404).body("Documento o solicitud no encontrada");
         }

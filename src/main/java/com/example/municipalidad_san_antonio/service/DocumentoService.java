@@ -21,8 +21,8 @@ public class DocumentoService {
     }
 
     //traer por id
-    public Documento findById(Integer id) {
-        return documentoRepository.findById(id).orElse(null);
+    public List<Documento> findByIdDocumento(Integer idDocumento) {
+        return documentoRepository.findByIdDocumento(idDocumento);
     }
 
     //Borrar por id
