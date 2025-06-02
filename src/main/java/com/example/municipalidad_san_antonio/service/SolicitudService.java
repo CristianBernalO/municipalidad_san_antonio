@@ -32,4 +32,7 @@ public class SolicitudService {
         solicitudRepository.save(solicitudActual);
         return "Solicitud actualizada";
     }
+    public List<Solicitud> findAllByEstadoSolicitud(String estadoSolicitud) {
+        return solicitudRepository.findByEstadoSolicitud(estadoSolicitud);
+    }
 }

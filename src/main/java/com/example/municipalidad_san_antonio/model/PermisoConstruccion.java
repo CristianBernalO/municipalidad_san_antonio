@@ -16,6 +16,9 @@ public class PermisoConstruccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPermiso;
 
+    @Column
+    private Integer idSolicitud;
+
     @Column(length = 30, nullable = false)
     private String codigoPermiso;
 

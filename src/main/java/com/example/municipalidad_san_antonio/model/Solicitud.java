@@ -18,6 +18,9 @@ public class Solicitud {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSolicitud;
 
+    @Column
+    private Integer idRevisorTecnico;
+
     @Column(nullable = false, length = 100)
     private String nombreSolicitante;
 
@@ -32,4 +35,7 @@ public class Solicitud {
 
     @Column
     private String observacionSolicitud;
+
+    @Column
+    private boolean solicitudAceptada = false;
 }

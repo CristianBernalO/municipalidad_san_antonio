@@ -17,7 +17,7 @@ public class PermisoConstruccionService {
 
     //traer por id
     public PermisoConstruccion findById(Integer id) {
-        return permisoConstruccionRepository.findById(id).get();
+        return permisoConstruccionRepository.findById(id).orElse(null);
     }
 
     //Traer todos los permisos

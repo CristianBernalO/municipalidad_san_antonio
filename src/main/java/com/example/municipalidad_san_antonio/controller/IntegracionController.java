@@ -7,29 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/v1/integracion/minvu")
 @RestController
 public class IntegracionController {
 
     @Autowired
     private SolicitudService solicitudService;
 
-    @Autowired
-    private SeguimientoService seguimientoService;
-
     @PostMapping("/api/v1/integracion/minvu")
     public ResponseEntity<?> sendSolicitud(@RequestParam Solicitud solicitud) {
-        return ResponseEntity.status(200).body(solicitudService.save(solicitud));
+        solicitudService.findById(solicitud.getIdSolicitud());
+        return ResponseEntity.status(200).body("Informacion enviada correctamente");
     }
     @GetMapping("/api/v1/integracion/minvu/estado/{id}")
     public ResponseEntity<?> getEstado(@PathVariable Integer id) {
-        return ResponseEntity.status(200).body(seguimientoService.getSeguimiento(id));
+        return ResponseEntity.status(200).body(solicitudService.findById(id));
     }
     @PostMapping("/api/v1/integracion/minvu/guardarSolicitud")
     public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud) {
         return ResponseEntity.status(200).body(solicitudService.save(solicitud));
     }
-
-
-
 }
