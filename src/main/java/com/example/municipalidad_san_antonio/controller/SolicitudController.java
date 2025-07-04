@@ -118,7 +118,7 @@ public class SolicitudController {
         return ResponseEntity.status(201).body("Observaciones ingresadas");
     }
     //Aprobar la solicitud
-    @PostMapping("/api/v1/revisiones/{id}/observaciones")
+    @PostMapping("/api/v1/revisiones/{id}/aprobar")
     public ResponseEntity<?> aprobarSolicitud(@RequestBody Solicitud solicitud, @PathVariable Integer id) {
         if (solicitud.getIdSolicitud() != id) {
             return ResponseEntity.status(404).body("Solicitud no encontrada");

@@ -2,9 +2,8 @@ package com.example.municipalidad_san_antonio.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @Table(name = "revisor_tecnico")
@@ -21,7 +20,7 @@ public class RevisorTecnico {
     private String nombre;
 
     @Column(length = 50)
-    public String apellido;
+    private String apellido;
 
     @Column
     private String email;

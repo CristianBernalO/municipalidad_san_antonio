@@ -28,4 +28,45 @@ public class Documento {
 
     @Column(name = "fecha_subida")
     private LocalDateTime fechaSubida;
+
+    // Métodos getter y setter manuales para resolver problemas de compilación
+    public Integer getIdDocumento() {
+        return idDocumento;
+    }
+
+    public void setIdDocumento(Integer idDocumento) {
+        this.idDocumento = idDocumento;
+    }
+
+    public Integer getIdSolicitud() {
+        return idSolicitud;
+    }
+
+    public void setIdSolicitud(Integer idSolicitud) {
+        this.idSolicitud = idSolicitud;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getArchivoUrl() {
+        return archivoUrl;
+    }
+
+    public void setArchivoUrl(String archivoUrl) {
+        this.archivoUrl = archivoUrl;
+    }
+
+    public LocalDateTime getFechaSubida() {
+        return fechaSubida;
+    }
+
+    public void setFechaSubida(LocalDateTime fechaSubida) {
+        this.fechaSubida = fechaSubida;
+    }
 }

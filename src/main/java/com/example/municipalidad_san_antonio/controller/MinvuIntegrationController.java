@@ -8,22 +8,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class IntegracionController {
+@RequestMapping("/api/v1/minvu-integration")
+public class MinvuIntegrationController {
 
     @Autowired
     private SolicitudService solicitudService;
 
-    @PostMapping("/api/v1/integracion/minvu")
+    @PostMapping("/enviar-solicitud")
     public ResponseEntity<?> sendSolicitud(@RequestParam Solicitud solicitud) {
         solicitudService.findById(solicitud.getIdSolicitud());
-        return ResponseEntity.status(200).body("Informacion enviada correctamente");
+        return ResponseEntity.status(200).body("Información enviada correctamente a MINVU");
     }
-    @GetMapping("/api/v1/integracion/minvu/estado/{id}")
+    
+    @GetMapping("/estado/{id}")
     public ResponseEntity<?> getEstado(@PathVariable Integer id) {
         return ResponseEntity.status(200).body(solicitudService.findById(id));
     }
-    @PostMapping("/api/v1/integracion/minvu/guardarSolicitud")
+    
+    @PostMapping("/guardar-solicitud")
     public ResponseEntity<?> saveSolicitud(@RequestBody Solicitud solicitud) {
         return ResponseEntity.status(200).body(solicitudService.save(solicitud));
     }
-}
+} 

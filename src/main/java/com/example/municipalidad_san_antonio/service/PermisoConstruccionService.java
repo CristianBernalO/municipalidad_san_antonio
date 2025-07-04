@@ -21,8 +21,27 @@ public class PermisoConstruccionService {
     }
 
     //Traer todos los permisos
-
     public List<PermisoConstruccion> findAll() {
         return permisoConstruccionRepository.findAll();
+    }
+
+    // Guardar un permiso
+    public PermisoConstruccion save(PermisoConstruccion permiso) {
+        return permisoConstruccionRepository.save(permiso);
+    }
+
+    // Eliminar por ID
+    public void deleteById(Integer id) {
+        permisoConstruccionRepository.deleteById(id);
+    }
+
+    // Buscar por tipo de permiso
+    public List<PermisoConstruccion> findByTipoPermiso(String tipoPermiso) {
+        return permisoConstruccionRepository.findByTipoPermiso(tipoPermiso);
+    }
+
+    // Buscar por nombre del solicitante
+    public List<PermisoConstruccion> findByNombreSolicitante(String nombreSolicitante) {
+        return permisoConstruccionRepository.findByNombreSolicitante(nombreSolicitante);
     }
 }

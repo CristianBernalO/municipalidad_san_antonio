@@ -1,0 +1,976 @@
+{
+    "info": {
+      "name": "Municipalidad_san_antonio",
+      "description": "Colección de endpoints de la API Municipalidad San Antonio",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "SolicitudController",
+        "item": [
+          {
+            "name": "Crear nueva solicitud",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"campo1\": \"valor1\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8080/api/v1/solicitudes",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8080",
+                "path": ["api", "v1", "solicitudes"]
+              }
+            }
+          },
+          {
+            "name": "Obtener detalles de una solicitud",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes", ":id"]}
+            }
+          },
+          {
+            "name": "Listar todas las solicitudes",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes"]}
+            }
+          },
+          {
+            "name": "Actualizar una solicitud",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"campo1\": \"nuevoValor\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes", ":id"]}
+            }
+          },
+          {
+            "name": "Borrar una solicitud",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v1/borrarsolicitud/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "borrarsolicitud", ":id"]}
+            }
+          },
+          {
+            "name": "Agregar documento a solicitud",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"campo\": \"valor\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes/:id/documentos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes", ":id", "documentos"]}
+            }
+          },
+          {
+            "name": "Listar documentos de una solicitud",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes/:id/documentos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes", ":id", "documentos"]}
+            }
+          },
+          {
+            "name": "Borrar documento de una solicitud",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v1/solicitudes/:id/documentos/:docId", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "solicitudes", ":id", "documentos", ":docId"]}
+            }
+          },
+          {
+            "name": "Revisiones pendientes",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/revisiones/pendientes?estadoSolicitud=Pendiente%20revision%20tecnica", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "revisiones", "pendientes"], "query": [{"key": "estadoSolicitud", "value": "Pendiente revision tecnica"}]}
+            }
+          },
+          {
+            "name": "Registrar observaciones",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"campo\": \"valor\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/revisiones/:id/observaciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "revisiones", ":id", "observaciones"]}
+            }
+          },
+          {
+            "name": "Aprobar solicitud",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"campo\": \"valor\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/revisiones/:id/aprobar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "revisiones", ":id", "aprobar"]}
+            }
+          },
+          {
+            "name": "Listar informes técnicos pendientes",
+            "request": {
+              "method": "GET",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "\"Pendiente aprobacion tecnica\""},
+              "url": {"raw": "http://localhost:8080/api/v1/resoluciones/pendientes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "resoluciones", "pendientes"]}
+            }
+          },
+          {
+            "name": "Firmar y validar solicitud",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"estadoSolicitud\": \"Pendiente aprobacion tecnica\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/resoluciones/:id/firmar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "resoluciones", ":id", "firmar"]}
+            }
+          },
+          {
+            "name": "Descargar resolución",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/resoluciones/:id/descargar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "resoluciones", ":id", "descargar"]}
+            }
+          },
+          {
+            "name": "Obtener estado de la solicitud (seguimiento ciudadano)",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimiento/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimiento", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "UsuarioController",
+        "item": [
+          {
+            "name": "Listar todos los usuarios",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/usuarios", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "usuarios"]}
+            }
+          },
+          {
+            "name": "Obtener usuario por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/usuarios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "usuarios", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo usuario",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"email\": \"juan.perez@email.com\",\n  \"rol\": \"Ciudadano\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/usuarios", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "usuarios"]}
+            }
+          },
+          {
+            "name": "Actualizar usuario",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"Juan Pérez Actualizado\",\n  \"email\": \"juan.actualizado@email.com\",\n  \"rol\": \"Funcionario\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/usuarios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "usuarios", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar usuario",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/usuarios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "usuarios", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ArchivoController",
+        "item": [
+          {
+            "name": "Listar todos los archivos",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/archivos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "archivos"]}
+            }
+          },
+          {
+            "name": "Obtener archivo por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/archivos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "archivos", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo archivo",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"documento.pdf\",\n  \"tipo\": \"PDF\",\n  \"tamaño\": 1024\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/archivos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "archivos"]}
+            }
+          },
+          {
+            "name": "Actualizar archivo",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"documento_actualizado.pdf\",\n  \"tipo\": \"PDF\",\n  \"tamaño\": 2048\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/archivos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "archivos", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar archivo",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/archivos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "archivos", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "BitacoraController",
+        "item": [
+          {
+            "name": "Listar todas las bitácoras",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/bitacoras", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "bitacoras"]}
+            }
+          },
+          {
+            "name": "Obtener bitácora por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/bitacoras/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "bitacoras", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva bitácora",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"accion\": \"Creación de solicitud\",\n  \"usuario\": \"admin\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/bitacoras", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "bitacoras"]}
+            }
+          },
+          {
+            "name": "Actualizar bitácora",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"accion\": \"Actualización de solicitud\",\n  \"usuario\": \"admin\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/bitacoras/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "bitacoras", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar bitácora",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/bitacoras/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "bitacoras", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ExpedienteController",
+        "item": [
+          {
+            "name": "Listar todos los expedientes",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/expedientes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "expedientes"]}
+            }
+          },
+          {
+            "name": "Obtener expediente por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/expedientes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "expedientes", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo expediente",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"numero\": \"EXP-2024-001\",\n  \"tipo\": \"Permiso de Construcción\",\n  \"estado\": \"En trámite\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/expedientes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "expedientes"]}
+            }
+          },
+          {
+            "name": "Actualizar expediente",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"numero\": \"EXP-2024-001\",\n  \"tipo\": \"Permiso de Construcción\",\n  \"estado\": \"Aprobado\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/expedientes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "expedientes", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar expediente",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/expedientes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "expedientes", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "FirmaElectronicaController",
+        "item": [
+          {
+            "name": "Listar todas las firmas electrónicas",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/firmas-electronicas", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "firmas-electronicas"]}
+            }
+          },
+          {
+            "name": "Obtener firma electrónica por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/firmas-electronicas/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "firmas-electronicas", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva firma electrónica",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"certificado\": \"certificado.p12\",\n  \"fechaVencimiento\": \"2025-12-31\",\n  \"estado\": \"Activo\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/firmas-electronicas", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "firmas-electronicas"]}
+            }
+          },
+          {
+            "name": "Actualizar firma electrónica",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"certificado\": \"certificado_actualizado.p12\",\n  \"fechaVencimiento\": \"2026-12-31\",\n  \"estado\": \"Activo\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/firmas-electronicas/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "firmas-electronicas", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar firma electrónica",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/firmas-electronicas/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "firmas-electronicas", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "HistorialCambiosController",
+        "item": [
+          {
+            "name": "Listar todo el historial de cambios",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/historial-cambios", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "historial-cambios"]}
+            }
+          },
+          {
+            "name": "Obtener historial de cambios por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/historial-cambios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "historial-cambios", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo registro de historial",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"campo\": \"estado\",\n  \"valorAnterior\": \"Pendiente\",\n  \"valorNuevo\": \"Aprobado\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/historial-cambios", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "historial-cambios"]}
+            }
+          },
+          {
+            "name": "Actualizar historial de cambios",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"campo\": \"estado\",\n  \"valorAnterior\": \"Pendiente\",\n  \"valorNuevo\": \"Rechazado\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/historial-cambios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "historial-cambios", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar historial de cambios",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/historial-cambios/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "historial-cambios", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "IntegracionMinvuController",
+        "item": [
+          {
+            "name": "Listar todas las integraciones MINVU",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros"]}
+            }
+          },
+          {
+            "name": "Obtener integración MINVU por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva integración MINVU",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"solicitudId\": 1,\n  \"estadoEnvio\": \"Enviado\",\n  \"fechaEnvio\": \"2024-01-15\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros"]}
+            }
+          },
+          {
+            "name": "Actualizar integración MINVU",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"solicitudId\": 1,\n  \"estadoEnvio\": \"Procesado\",\n  \"fechaEnvio\": \"2024-01-15\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar integración MINVU",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros", ":id"]}
+            }
+          },
+          {
+            "name": "Enviar solicitud a MINVU",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"idSolicitud\": 1\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/enviar-solicitud", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "enviar-solicitud"]}
+            }
+          },
+          {
+            "name": "Obtener estado de solicitud en MINVU",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/estado-solicitud/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "estado-solicitud", ":id"]}
+            }
+          },
+          {
+            "name": "Guardar solicitud desde MINVU",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"idSolicitud\": 1,\n  \"estado\": \"Recibido desde MINVU\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/guardar-solicitud", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "guardar-solicitud"]}
+            }
+          },
+          {
+            "name": "Obtener integraciones por estado de envío",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros/estado/:estadoEnvio", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros", "estado", ":estadoEnvio"]}
+            }
+          },
+          {
+            "name": "Obtener integraciones por expediente",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/integracion-minvu/registros/expediente/:expedienteId", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "integracion-minvu", "registros", "expediente", ":expedienteId"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "MinvuIntegrationController",
+        "item": [
+          {
+            "name": "Enviar solicitud a MINVU (alternativo)",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"idSolicitud\": 1\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/minvu-integration/enviar-solicitud", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "minvu-integration", "enviar-solicitud"]}
+            }
+          },
+          {
+            "name": "Obtener estado desde MINVU",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/minvu-integration/estado/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "minvu-integration", "estado", ":id"]}
+            }
+          },
+          {
+            "name": "Guardar solicitud desde MINVU (alternativo)",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"idSolicitud\": 1,\n  \"estado\": \"Recibido desde MINVU\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/minvu-integration/guardar-solicitud", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "minvu-integration", "guardar-solicitud"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "NotificacionController",
+        "item": [
+          {
+            "name": "Listar todas las notificaciones",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/notificaciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "notificaciones"]}
+            }
+          },
+          {
+            "name": "Crear nueva notificación",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"destinatario\": \"usuario@email.com\",\n  \"asunto\": \"Solicitud aprobada\",\n  \"mensaje\": \"Su solicitud ha sido aprobada\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/notificaciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "notificaciones"]}
+            }
+          },
+          {
+            "name": "Obtener notificación por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/notificaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "notificaciones", ":id"]}
+            }
+          },
+          {
+            "name": "Actualizar notificación",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"destinatario\": \"usuario@email.com\",\n  \"asunto\": \"Solicitud actualizada\",\n  \"mensaje\": \"Su solicitud ha sido actualizada\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/notificaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "notificaciones", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar notificación",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/notificaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "notificaciones", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ObservacionController",
+        "item": [
+          {
+            "name": "Listar todas las observaciones",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/observaciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "observaciones"]}
+            }
+          },
+          {
+            "name": "Obtener observación por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/observaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "observaciones", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva observación",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"descripcion\": \"Falta documentación adicional\",\n  \"tipo\": \"Requerimiento\",\n  \"prioridad\": \"Alta\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/observaciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "observaciones"]}
+            }
+          },
+          {
+            "name": "Actualizar observación",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"descripcion\": \"Documentación adicional recibida\",\n  \"tipo\": \"Información\",\n  \"prioridad\": \"Baja\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/observaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "observaciones", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar observación",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/observaciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "observaciones", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "OficinaPartesController",
+        "item": [
+          {
+            "name": "Listar todas las oficinas de partes",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/oficina-partes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "oficina-partes"]}
+            }
+          },
+          {
+            "name": "Obtener oficina de partes por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/oficina-partes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "oficina-partes", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva oficina de partes",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"Oficina Central\",\n  \"direccion\": \"Av. Principal 123\",\n  \"telefono\": \"+56 2 2345 6789\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/oficina-partes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "oficina-partes"]}
+            }
+          },
+          {
+            "name": "Actualizar oficina de partes",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"nombre\": \"Oficina Central Actualizada\",\n  \"direccion\": \"Av. Principal 456\",\n  \"telefono\": \"+56 2 2345 6790\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/oficina-partes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "oficina-partes", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar oficina de partes",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/oficina-partes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "oficina-partes", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "PagoController",
+        "item": [
+          {
+            "name": "Obtener orden de pago por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/pagos/:id/orden", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "pagos", ":id", "orden"]}
+            }
+          },
+          {
+            "name": "Confirmar pago",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"monto\": 50000,\n  \"metodoPago\": \"Transferencia\",\n  \"estadoPago\": \"Confirmado\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/pagos/:id/confirmar", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "pagos", ":id", "confirmar"]}
+            }
+          },
+          {
+            "name": "Obtener estado del pago",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/pagos/:id/estado", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "pagos", ":id", "estado"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "PermisoConstruccionController",
+        "item": [
+          {
+            "name": "Listar todos los permisos de construcción",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion"]}
+            }
+          },
+          {
+            "name": "Obtener permiso de construcción por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo permiso de construcción",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipoPermiso\": \"Nueva Construcción\",\n  \"nombreSolicitante\": \"Juan Pérez\",\n  \"direccion\": \"Av. Principal 123\",\n  \"superficie\": 150.5\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion"]}
+            }
+          },
+          {
+            "name": "Actualizar permiso de construcción",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipoPermiso\": \"Nueva Construcción\",\n  \"nombreSolicitante\": \"Juan Pérez\",\n  \"direccion\": \"Av. Principal 123\",\n  \"superficie\": 150.5\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar permiso de construcción",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion", ":id"]}
+            }
+          },
+          {
+            "name": "Obtener permisos por tipo",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion/tipo/:tipoPermiso", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion", "tipo", ":tipoPermiso"]}
+            }
+          },
+          {
+            "name": "Obtener permisos por solicitante",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/permisos-construccion/solicitante/:nombreSolicitante", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "permisos-construccion", "solicitante", ":nombreSolicitante"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "SeguimientoController",
+        "item": [
+          {
+            "name": "Obtener seguimiento por solicitud",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos/solicitud/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos", "solicitud", ":id"]}
+            }
+          },
+          {
+            "name": "Listar todos los seguimientos",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos"]}
+            }
+          },
+          {
+            "name": "Obtener seguimiento por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo seguimiento",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"estado\": \"En proceso\",\n  \"fechaActualizacion\": \"2024-01-15\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos"]}
+            }
+          },
+          {
+            "name": "Actualizar seguimiento",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"estado\": \"Completado\",\n  \"fechaActualizacion\": \"2024-01-16\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar seguimiento",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos", ":id"]}
+            }
+          },
+          {
+            "name": "Obtener seguimientos por estado",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v1/seguimientos/estado/:estado", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v1", "seguimientos", "estado", ":estado"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ResolucionController",
+        "item": [
+          {
+            "name": "Listar todas las resoluciones",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/resoluciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "resoluciones"]}
+            }
+          },
+          {
+            "name": "Obtener resolución por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/resoluciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "resoluciones", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva resolución",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"numero\": \"RES-2024-001\",\n  \"tipo\": \"Aprobación\",\n  \"estado\": \"Pendiente\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/resoluciones", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "resoluciones"]}
+            }
+          },
+          {
+            "name": "Actualizar resolución",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"numero\": \"RES-2024-001\",\n  \"tipo\": \"Aprobación\",\n  \"estado\": \"Aprobada\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/resoluciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "resoluciones", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar resolución",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/resoluciones/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "resoluciones", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ValidacionDocumentalController",
+        "item": [
+          {
+            "name": "Listar todas las validaciones documentales",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/validaciones-documentales", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "validaciones-documentales"]}
+            }
+          },
+          {
+            "name": "Obtener validación documental por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/validaciones-documentales/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "validaciones-documentales", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva validación documental",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipoValidacion\": \"Documentos requeridos\",\n  \"estado\": \"Pendiente\",\n  \"observaciones\": \"Falta documentación adicional\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/validaciones-documentales", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "validaciones-documentales"]}
+            }
+          },
+          {
+            "name": "Actualizar validación documental",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipoValidacion\": \"Documentos requeridos\",\n  \"estado\": \"Aprobada\",\n  \"observaciones\": \"Documentación completa\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/validaciones-documentales/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "validaciones-documentales", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar validación documental",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/validaciones-documentales/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "validaciones-documentales", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "RentasPatentesController",
+        "item": [
+          {
+            "name": "Listar todas las rentas y patentes",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/rentas-patentes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "rentas-patentes"]}
+            }
+          },
+          {
+            "name": "Obtener renta/patente por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/rentas-patentes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "rentas-patentes", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nueva renta/patente",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipo\": \"Patente Comercial\",\n  \"monto\": 50000,\n  \"estado\": \"Activa\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/rentas-patentes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "rentas-patentes"]}
+            }
+          },
+          {
+            "name": "Actualizar renta/patente",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"tipo\": \"Patente Comercial\",\n  \"monto\": 60000,\n  \"estado\": \"Activa\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/rentas-patentes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "rentas-patentes", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar renta/patente",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/rentas-patentes/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "rentas-patentes", ":id"]}
+            }
+          }
+        ]
+      },
+      {
+        "name": "ReporteAuditoriaController",
+        "item": [
+          {
+            "name": "Listar todos los reportes de auditoría",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/reportes-auditoria", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "reportes-auditoria"]}
+            }
+          },
+          {
+            "name": "Obtener reporte de auditoría por ID",
+            "request": {
+              "method": "GET",
+              "url": {"raw": "http://localhost:8080/api/v2/reportes-auditoria/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "reportes-auditoria", ":id"]}
+            }
+          },
+          {
+            "name": "Crear nuevo reporte de auditoría",
+            "request": {
+              "method": "POST",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"tipo\": \"Acceso al sistema\",\n  \"usuario\": \"admin\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/reportes-auditoria", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "reportes-auditoria"]}
+            }
+          },
+          {
+            "name": "Actualizar reporte de auditoría",
+            "request": {
+              "method": "PUT",
+              "header": [{"key": "Content-Type", "value": "application/json"}],
+              "body": {"mode": "raw", "raw": "{\n  \"fecha\": \"2024-01-15\",\n  \"tipo\": \"Modificación de datos\",\n  \"usuario\": \"admin\"\n}"},
+              "url": {"raw": "http://localhost:8080/api/v2/reportes-auditoria/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "reportes-auditoria", ":id"]}
+            }
+          },
+          {
+            "name": "Eliminar reporte de auditoría",
+            "request": {
+              "method": "DELETE",
+              "url": {"raw": "http://localhost:8080/api/v2/reportes-auditoria/:id", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "v2", "reportes-auditoria", ":id"]}
+            }
+          }
+        ]
+      }
+    ]
+  }
